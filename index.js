@@ -6,23 +6,26 @@ inquirer
     .prompt([
         {
             type: 'input',
-            name: 'name',
-            message: 'What is your name?',
+            name: 'projTitle',
+            message: 'What is the name of your project?',
         },
         {
             type: 'input',
-            name: 'location',
-            message: 'Where do you live?',
+            name: 'projDescr',
+            message: 'Write a short description of your project:',
         },
         {
             type: 'input',
-            name: 'linkedIn',
-            message: 'What is your LinkedIn URL?',
+            name: 'projInstall',
+            message: 'What is the installation process:',
         },
         {
-            type: 'input',
-            name: 'gitHub',
-            message: 'What is your GitHub URL?',
+            type: 'list',
+            name: 'projLicense',
+            message: 'Choose the appropriate license for your project:',
+            choices: [
+                "Apache","Academic","GNU","MIT","Mozilla","Open Source"
+            ]
         },
     ])
 
