@@ -31,6 +31,16 @@ function userPrompt() {
         },
         {
             type: "input",
+            name: "tests",
+            message: "Are there tests included? "
+        },
+        {
+            type: "input",
+            name: "contributing",
+            message: "Who is contributing to this project? "
+        },
+        {
+            type: "input",
             name: "userName",
             message: "What is your GitHub username? "
         },
@@ -44,11 +54,11 @@ function userPrompt() {
 
 async function init() {
     try {
-        const userInput = userPrompt();
+        const userInput = await userPrompt();
         const userContent = createReadme(userInput);
 
         await writeFileAsync('./results/README.md', userContent);
-        console.log('Success!!');
+        console.log('You have answered all the questions. The README file will be in the results folder.');
     }
     catch (err) {
         console.log(err);
