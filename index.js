@@ -1,10 +1,11 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const util = require("util");
-const createReadme = require("./createReadme")
+const createReadme = require("./createReadme");
+const writeFileAsync = util.promisify(fs.writeFile);
 
-inquirer
-    .prompt([
+function userPrompt() {
+    return inquirer.prompt([
         {
             type: 'input',
             name: 'projTitle',
@@ -39,34 +40,51 @@ inquirer
             message: "What is your email? "
         }
     ])
+}
 
-    .then(function (data) {
-        const html = `
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <meta http-equiv="X-UA-Compatible" content="ie=edge">
-            <title>Document</title>
-            <link rel="stylesheet" type="text/css" href="./style.css">
-        </head>
-        <body>
-        <h1 class="profile">${data.projTitle}</h1>
-        <div class="profile">${data.projDescr}</div>
-        <div class="profile">${data.projInstall}</div>
-        <div class="profile">${data.projLicense}</div>
-        <div class="profile">${data.userName}</div>
-        <div class="profile">${data.userEmail}</div>
-        <script type="text/javascript" src="script.js"></script>
-        </body>
-        </html>  
-    `;
-        fs.writeFile('index.html', html, function (err) {
-            if (err) {
-                return console.log(err);
-            }
+async function init() {
+    try {
+        const userInput = userPrompt();
+        const userContent = createReadme(userInput);
 
-            console.log('Success!');
-        });
-    });
+        await writeFileAsync('./results/README.md', userContent);
+        console.log('Success!!');
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
+init();
+
+
+    /*
+.then(function (data) {
+const html = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+<body>
+<h1 class="profile">${data.projTitle}</h1>
+<div class="profile">${data.projDescr}</div>
+<div class="profile">${data.projInstall}</div>
+<div class="profile">${data.projLicense}</div>
+<div class="profile">${data.userName}</div>
+<div class="profile">${data.userEmail}</div>
+<script type="text/javascript" src="script.js"></script>
+</body>
+</html>
+`;
+fs.writeFile('index.html', html, function (err) {
+    if (err) {
+        return console.log(err);
+    }
+
+    console.log('Success!');
+});
+}); */

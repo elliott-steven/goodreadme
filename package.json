@@ -1,0 +1,23 @@
+{
+  "name": "goodreadme",
+  "version": "1.0.0",
+  "description": "Create README file",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elliott-steven/goodreadme.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elliott-steven/goodreadme/issues"
+  },
+  "homepage": "https://github.com/elliott-steven/goodreadme#readme",
+  "dependencies": {
+    "inquirer": "^8.0.0"
+  },
+  "devDependencies": {}
+}
