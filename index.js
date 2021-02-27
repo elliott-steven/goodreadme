@@ -47,7 +47,7 @@ function userPrompt() {
         {
             type: "input",
             name: "userEmail",
-            message: "What is your email? "
+            message: "What is your email address? "
         }
     ])
 }

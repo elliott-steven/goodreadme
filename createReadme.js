@@ -7,6 +7,13 @@ function createReadme(userInput) {
 ${userInput.projDescr}
 
 ## Table of Contents
+ - [Description](#description)
+ - [Installation](#installation)
+ - [Usage](#usage)
+ - [License](#license)
+ - [Contributing](#contributing)
+ - [Tests](#tests)
+ - [Questions](#questions)
 
 ## Installation
 
@@ -26,11 +33,13 @@ ${userInput.contributing}
 
 ## Tests
 
-${userinput.tests}
+${userInput.tests}
 
 ## Questions
 
 Find me through GitHub: [${userInput.userName}] (https://www.github.com/${userInput.userName})
+
+Email me with any questions: ${userInput.userEmail}
     `;
 }
 
