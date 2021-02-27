@@ -1,6 +1,7 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const util = require("util");
+const createReadme = require("./createReadme")
 
 inquirer
     .prompt([
@@ -24,9 +25,19 @@ inquirer
             name: 'projLicense',
             message: 'Choose the appropriate license for your project:',
             choices: [
-                "Apache","Academic","GNU","MIT","Mozilla","Open Source"
+                "Apache", "Academic", "GNU", "MIT", "Mozilla", "Open Source"
             ]
         },
+        {
+            type: "input",
+            name: "userName",
+            message: "What is your GitHub username? "
+        },
+        {
+            type: "input",
+            name: "userEmail",
+            message: "What is your email? "
+        }
     ])
 
     .then(function (data) {
@@ -41,10 +52,12 @@ inquirer
             <link rel="stylesheet" type="text/css" href="./style.css">
         </head>
         <body>
-        <h1 class="profile">${data.name}</h1>
-        <div class="profile">${data.location}</div>
-        <div class="profile">${data.linkedIn}</div>
-        <div class="profile">${data.gitHub}</div>
+        <h1 class="profile">${data.projTitle}</h1>
+        <div class="profile">${data.projDescr}</div>
+        <div class="profile">${data.projInstall}</div>
+        <div class="profile">${data.projLicense}</div>
+        <div class="profile">${data.userName}</div>
+        <div class="profile">${data.userEmail}</div>
         <script type="text/javascript" src="script.js"></script>
         </body>
         </html>  
